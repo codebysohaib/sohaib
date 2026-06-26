@@ -575,7 +575,8 @@
     
     .contact-title { font-size: 2rem; }
     .contact-email { padding: 0.8rem 1rem; font-size: 0.85rem; width: 100%; word-break: break-all; }
-    .contact-glow { padding: 2rem 1rem; border-radius: 12px; }
+    #contact { padding: 4rem 0.5rem; }
+    .contact-glow { padding: 2rem 0.5rem; border-radius: 12px; width: 100%; box-sizing: border-box; }
     .social-links { gap: 1rem; justify-content: center; }
     .social-link { font-size: 0.7rem; }
     
