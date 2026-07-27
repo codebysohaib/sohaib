@@ -79,6 +79,9 @@ export const metadata: Metadata = {
     creator: "@codebysohaib",
     images: [`${siteUrl}/profile.jpeg`],
   },
+  verification: {
+    google: '_TcSOcrPDSgJAaZJp0h3QITzC6bf8rw55LR-zGrPz44',
+  },
   robots: {
     index: true,
     follow: true,
@@ -141,6 +144,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
       <head>
+        <meta
+          name="google-site-verification"
+          content="_TcSOcrPDSgJAaZJp0h3QITzC6bf8rw55LR-zGrPz44"
+        />
         <link
           rel="preconnect"
           href="https://cdnjs.cloudflare.com"
