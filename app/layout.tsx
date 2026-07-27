@@ -79,6 +79,11 @@ export const metadata: Metadata = {
     creator: "@codebysohaib",
     images: [`${siteUrl}/profile.jpeg`],
   },
+  icons: {
+    icon: '/logo.png',
+    shortcut: '/logo.png',
+    apple: '/logo.png',
+  },
   verification: {
     google: '_TcSOcrPDSgJAaZJp0h3QITzC6bf8rw55LR-zGrPz44',
   },
