@@ -29,6 +29,7 @@ export default function ProjectCard({ project }: { project: ProjectItem }) {
         href={project.url}
         target="_blank"
         rel="noopener noreferrer"
+        aria-label={`View ${project.name} - ${project.type}`}
         className="project-card"
       >
         {content}

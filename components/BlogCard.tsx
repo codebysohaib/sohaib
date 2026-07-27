@@ -20,7 +20,12 @@ export default function BlogCard({ post }: { post: BlogPost }) {
           <span className="read-time">{post.readTime}</span>
         </div>
         <div style={{ marginTop: '1rem' }}>
-          <Link href={`/blog/${post.slug}`} className="btn-ghost" style={{ display: 'inline-block' }}>
+          <Link
+            href={`/blog/${post.slug}`}
+            className="btn-ghost"
+            style={{ display: 'inline-block' }}
+            aria-label={`Read article: ${post.title}`}
+          >
             Read Article
           </Link>
         </div>

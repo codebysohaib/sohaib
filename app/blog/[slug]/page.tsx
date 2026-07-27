@@ -25,17 +25,42 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
 
   if (!post) {
     return {
-      title: 'Article Not Found | CodeBySohaib',
+      title: 'Article Not Found',
     };
   }
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://codebysohaib.dev';
+  const articleUrl = `${siteUrl}/blog/${post.slug}`;
+
   return {
-    title: `${post.title} | CodeBySohaib`,
+    title: post.title,
     description: post.description,
+    authors: [{ name: post.author, url: siteUrl }],
+    alternates: {
+      canonical: articleUrl,
+    },
     openGraph: {
-      title: post.title,
+      title: `${post.title} | CodeBySohaib`,
       description: post.description,
+      url: articleUrl,
       type: 'article',
+      siteName: 'CodeBySohaib',
+      authors: [post.author],
+      images: [
+        {
+          url: `${siteUrl}/profile.jpeg`,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${post.title} | CodeBySohaib`,
+      description: post.description,
+      creator: '@codebysohaib',
+      images: [`${siteUrl}/profile.jpeg`],
     },
   };
 }
@@ -47,6 +72,56 @@ export default async function BlogArticlePage({ params }: ArticlePageProps) {
   if (!post) {
     notFound();
   }
+
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://codebysohaib.dev';
+  const articleUrl = `${siteUrl}/blog/${post.slug}`;
+
+  const articleJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.description,
+    image: `${siteUrl}/profile.jpeg`,
+    author: {
+      '@type': 'Person',
+      name: post.author,
+      url: siteUrl,
+    },
+    publisher: {
+      '@type': 'Person',
+      name: 'Muhammad Sohaib Asif',
+      url: siteUrl,
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': articleUrl,
+    },
+  };
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: siteUrl,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Blog',
+        item: `${siteUrl}/blog`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: post.title,
+        item: articleUrl,
+      },
+    ],
+  };
 
   const isCBS = post.slug === 'introducing-cbs-devtools';
 
@@ -118,6 +193,14 @@ export default async function BlogArticlePage({ params }: ArticlePageProps) {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <ClientRevealInitializer />
       <Navbar />
       <main className="article-page-container">
