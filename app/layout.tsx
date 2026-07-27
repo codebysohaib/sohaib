@@ -31,6 +31,11 @@ export default function RootLayout({
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         />
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1808417838685807"
+          crossOrigin="anonymous"
+        />
       </head>
       <body>{children}</body>
     </html>
