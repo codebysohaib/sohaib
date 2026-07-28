@@ -115,4 +115,12 @@ export const projectsData: ProjectItem[] = [
     desc: 'A robust Point of Sale desktop application designed to streamline retail management operations.',
     tags: ['Desktop', 'UI/UX'],
   },
+  {
+    visualClass: 'pv-7',
+    icon: 'fas fa-wpforms',
+    type: 'Web Application',
+    name: 'Dataform App',
+    desc: 'A modern web application built for dynamic data form creation and management, ensuring a seamless user experience.',
+    tags: ['Web App', 'UI/UX', 'Development'],
+  },
 ];
